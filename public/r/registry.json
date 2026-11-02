@@ -1,0 +1,253 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "motionkit",
+  "homepage": "https://github.com/notlakshitha/motionkit",
+  "items": [
+    {
+      "name": "particle-field-hero",
+      "type": "registry:block",
+      "title": "Particle Field",
+      "description": "A drifting field of linked points with a quiet, centered headline.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/particle-field-hero.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/particle-field-hero.tsx"
+        }
+      ]
+    },
+    {
+      "name": "glass-refraction-hero",
+      "type": "registry:block",
+      "title": "Glass Refraction",
+      "description": "Smoked glass panels, a traveling sheen, and type held in the blur.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/glass-refraction-hero.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/glass-refraction-hero.tsx"
+        }
+      ]
+    },
+    {
+      "name": "orbit-objects-hero",
+      "type": "registry:block",
+      "title": "Orbit Objects",
+      "description": "Three studio objects turning slowly in a dark room, with a still fallback.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/orbit-objects-canvas.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/orbit-objects-canvas.tsx"
+        },
+        {
+          "path": "registry/motionkit/orbit-objects-hero.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/orbit-objects-hero.tsx"
+        }
+      ],
+      "dependencies": [
+        "three",
+        "@react-three/fiber",
+        "@react-three/drei"
+      ]
+    },
+    {
+      "name": "horizon-veil",
+      "type": "registry:block",
+      "title": "Horizon Veil",
+      "description": "A lazy-loaded shader of night, copper heat, and a thin tide line.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/horizon-veil-gl.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/horizon-veil-gl.ts"
+        },
+        {
+          "path": "registry/motionkit/horizon-veil.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/horizon-veil.tsx"
+        }
+      ],
+      "dependencies": [
+        "ogl"
+      ]
+    },
+    {
+      "name": "ember-mesh",
+      "type": "registry:block",
+      "title": "Ember Mesh",
+      "description": "Soft embers drift across a coal field. No footage, no WebGL.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/ember-mesh.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/ember-mesh.tsx"
+        }
+      ]
+    },
+    {
+      "name": "scroll-text-reveal",
+      "type": "registry:block",
+      "title": "Scroll Text Reveal",
+      "description": "A manifesto that lights word by word as the page moves.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/scroll-text-reveal.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/scroll-text-reveal.tsx"
+        }
+      ],
+      "dependencies": [
+        "gsap"
+      ]
+    },
+    {
+      "name": "bento-signal",
+      "type": "registry:block",
+      "title": "Bento Signal",
+      "description": "A feature grid with a drawn chart, a count, and staggered cells.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/bento-signal.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/bento-signal.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "spotlight-follow",
+      "type": "registry:block",
+      "title": "Spotlight Follow",
+      "description": "A warm pool of light tracks the pointer across a row of chapters.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/spotlight-follow.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/spotlight-follow.tsx"
+        }
+      ]
+    },
+    {
+      "name": "logo-marquee",
+      "type": "registry:block",
+      "title": "Logo Marquee",
+      "description": "Fictional studio marks in an endless, pauseable ribbon.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/logo-marquee.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/logo-marquee.tsx"
+        }
+      ]
+    },
+    {
+      "name": "pricing-rise",
+      "type": "registry:block",
+      "title": "Pricing Rise",
+      "description": "Three seats, a rising count, and a brass rim on the middle plan.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/pricing-rise.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/pricing-rise.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    },
+    {
+      "name": "beam-cta",
+      "type": "registry:block",
+      "title": "Beam CTA",
+      "description": "A closing call with hairline beams that travel across the dark.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/beam-cta.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/beam-cta.tsx"
+        }
+      ]
+    },
+    {
+      "name": "launch-reel",
+      "type": "registry:block",
+      "title": "Launch Reel",
+      "description": "A night-train landing: title card, stations, chapters, and a last call.",
+      "files": [
+        {
+          "path": "registry/motionkit/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "components/motionkit/use-reduced-motion.ts"
+        },
+        {
+          "path": "registry/motionkit/launch-reel.tsx",
+          "type": "registry:component",
+          "target": "components/motionkit/launch-reel.tsx"
+        }
+      ],
+      "dependencies": [
+        "motion"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "beam-cta",
+  "title": "Beam CTA",
+  "description": "A closing call with hairline beams that travel across the dark.",
+  "files": [
+    {
+      "path": "registry/motionkit/use-reduced-motion.ts",
+      "content": "\"use client\"\n\nimport { useSyncExternalStore } from \"react\"\n\nfunction subscribe(onStoreChange: () => void) {\n  const media = window.matchMedia(\"(prefers-reduced-motion: reduce)\")\n  media.addEventListener(\"change\", onStoreChange)\n  return () => media.removeEventListener(\"change\", onStoreChange)\n}\n\nfunction getSnapshot() {\n  return window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n}\n\nfunction getServerSnapshot() {\n  return false\n}\n\nexport function usePrefersReducedMotion() {\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n",
+      "type": "registry:lib",
+      "target": "components/motionkit/use-reduced-motion.ts"
+    },
+    {
+      "path": "registry/motionkit/beam-cta.tsx",
+      "content": "\"use client\"\n\nimport { usePrefersReducedMotion } from \"./use-reduced-motion\"\n\nexport function BeamCta({ preview = false }: { preview?: boolean }) {\n  const reduced = usePrefersReducedMotion()\n\n  return (\n    <section\n      aria-label=\"Closing call\"\n      className={\n        preview\n          ? \"relative flex h-full items-end overflow-hidden bg-[#080808] p-5 text-[#f7f2ea]\"\n          : \"relative overflow-hidden bg-[#080808] px-6 py-24 text-[#f7f2ea]\"\n      }\n    >\n      <style>{`\n        @keyframes mk-dash {\n          to { stroke-dashoffset: -220; }\n        }\n        @media (prefers-reduced-motion: reduce) {\n          .mk-beam { animation: none !important; }\n        }\n      `}</style>\n      <svg className=\"absolute inset-0 h-full w-full\" viewBox=\"0 0 1200 480\" preserveAspectRatio=\"none\" aria-hidden>\n        <line x1=\"0\" y1=\"420\" x2=\"520\" y2=\"40\" stroke=\"rgba(230,177,90,0.75)\" strokeWidth=\"1.25\" className=\"mk-beam\" strokeDasharray=\"10 16\" style={{ animation: reduced ? undefined : \"mk-dash 3.2s linear infinite\" }} />\n        <line x1=\"180\" y1=\"480\" x2=\"860\" y2=\"0\" stroke=\"rgba(244,239,230,0.35)\" strokeWidth=\"1\" className=\"mk-beam\" strokeDasharray=\"6 18\" style={{ animation: reduced ? undefined : \"mk-dash 4.4s linear infinite\" }} />\n        <line x1=\"640\" y1=\"480\" x2=\"1200\" y2=\"80\" stroke=\"rgba(126,184,178,0.55)\" strokeWidth=\"1.25\" className=\"mk-beam\" strokeDasharray=\"12 14\" style={{ animation: reduced ? undefined : \"mk-dash 3.8s linear infinite\" }} />\n      </svg>\n      <div aria-hidden className=\"absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(230,177,90,0.16),transparent_55%)]\" />\n      <div className={preview ? \"relative max-w-md\" : \"relative mx-auto max-w-3xl text-center\"}>\n        <p className=\"text-[10px] tracking-[0.32em] text-[#e6b15a] uppercase\">Last light</p>\n        <h2\n          className={preview ? \"mt-2 font-serif text-4xl leading-[0.95]\" : \"mt-4 font-serif text-6xl leading-[0.95] md:text-7xl\"}\n          style={{ fontFamily: \"var(--font-serif), Georgia, serif\" }}\n        >\n          Leave a light on for the next reel.\n        </h2>\n        {preview ? null : (\n          <>\n            <p className=\"mx-auto mt-5 max-w-lg text-sm leading-6 text-[#ddd6cb]\">\n              A closing band of traveling lines. The beams are decoration. The invitation is the only thing that needs a click.\n            </p>\n            <button type=\"button\" className=\"mt-8 rounded-full bg-[#f7f2ea] px-6 py-3 text-sm font-medium text-[#1a140e]\">\n              Start a screening\n            </button>\n          </>\n        )}\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/motionkit/beam-cta.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

@@ -1,0 +1,140 @@
+{
+  "name": "motionkit",
+  "homepage": "https://github.com/notlakshitha/motionkit",
+  "blocks": [
+    {
+      "slug": "particle-field-hero",
+      "title": "Particle Field",
+      "category": "Heroes",
+      "description": "A drifting field of linked points with a quiet, centered headline.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/particle-field-hero.tsx"
+      ]
+    },
+    {
+      "slug": "glass-refraction-hero",
+      "title": "Glass Refraction",
+      "category": "Heroes",
+      "description": "Smoked glass panels, a traveling sheen, and type held in the blur.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/glass-refraction-hero.tsx"
+      ]
+    },
+    {
+      "slug": "orbit-objects-hero",
+      "title": "Orbit Objects",
+      "category": "Heroes",
+      "description": "Three studio objects turning slowly in a dark room, with a still fallback.",
+      "dependencies": ["three", "@react-three/fiber", "@react-three/drei"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/orbit-objects-canvas.tsx",
+        "registry/motionkit/orbit-objects-hero.tsx"
+      ]
+    },
+    {
+      "slug": "horizon-veil",
+      "title": "Horizon Veil",
+      "category": "Backgrounds",
+      "description": "A lazy-loaded shader of night, copper heat, and a thin tide line.",
+      "dependencies": ["ogl"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/horizon-veil-gl.ts",
+        "registry/motionkit/horizon-veil.tsx"
+      ]
+    },
+    {
+      "slug": "ember-mesh",
+      "title": "Ember Mesh",
+      "category": "Backgrounds",
+      "description": "Soft embers drift across a coal field. No footage, no WebGL.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/ember-mesh.tsx"
+      ]
+    },
+    {
+      "slug": "scroll-text-reveal",
+      "title": "Scroll Text Reveal",
+      "category": "Sections",
+      "description": "A manifesto that lights word by word as the page moves.",
+      "dependencies": ["gsap"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/scroll-text-reveal.tsx"
+      ]
+    },
+    {
+      "slug": "bento-signal",
+      "title": "Bento Signal",
+      "category": "Sections",
+      "description": "A feature grid with a drawn chart, a count, and staggered cells.",
+      "dependencies": ["motion"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/bento-signal.tsx"
+      ]
+    },
+    {
+      "slug": "spotlight-follow",
+      "title": "Spotlight Follow",
+      "category": "Sections",
+      "description": "A warm pool of light tracks the pointer across a row of chapters.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/spotlight-follow.tsx"
+      ]
+    },
+    {
+      "slug": "logo-marquee",
+      "title": "Logo Marquee",
+      "category": "Sections",
+      "description": "Fictional studio marks in an endless, pauseable ribbon.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/logo-marquee.tsx"
+      ]
+    },
+    {
+      "slug": "pricing-rise",
+      "title": "Pricing Rise",
+      "category": "Sections",
+      "description": "Three seats, a rising count, and a brass rim on the middle plan.",
+      "dependencies": ["motion"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/pricing-rise.tsx"
+      ]
+    },
+    {
+      "slug": "beam-cta",
+      "title": "Beam CTA",
+      "category": "Sections",
+      "description": "A closing call with hairline beams that travel across the dark.",
+      "dependencies": [],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/beam-cta.tsx"
+      ]
+    },
+    {
+      "slug": "launch-reel",
+      "title": "Launch Reel",
+      "category": "Full pages",
+      "description": "A night-train landing: title card, stations, chapters, and a last call.",
+      "dependencies": ["motion"],
+      "files": [
+        "registry/motionkit/use-reduced-motion.ts",
+        "registry/motionkit/launch-reel.tsx"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "logo-marquee",
+  "title": "Logo Marquee",
+  "description": "Fictional studio marks in an endless, pauseable ribbon.",
+  "files": [
+    {
+      "path": "registry/motionkit/use-reduced-motion.ts",
+      "content": "\"use client\"\n\nimport { useSyncExternalStore } from \"react\"\n\nfunction subscribe(onStoreChange: () => void) {\n  const media = window.matchMedia(\"(prefers-reduced-motion: reduce)\")\n  media.addEventListener(\"change\", onStoreChange)\n  return () => media.removeEventListener(\"change\", onStoreChange)\n}\n\nfunction getSnapshot() {\n  return window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n}\n\nfunction getServerSnapshot() {\n  return false\n}\n\nexport function usePrefersReducedMotion() {\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n",
+      "type": "registry:lib",
+      "target": "components/motionkit/use-reduced-motion.ts"
+    },
+    {
+      "path": "registry/motionkit/logo-marquee.tsx",
+      "content": "\"use client\"\n\nimport { usePrefersReducedMotion } from \"./use-reduced-motion\"\n\nconst studios = [\n  { name: \"Northline\", mark: \"N\" },\n  { name: \"Kelp & Co\", mark: \"K\" },\n  { name: \"Vellum\", mark: \"V\" },\n  { name: \"Arcadia Lab\", mark: \"A\" },\n  { name: \"Sable\", mark: \"S\" },\n  { name: \"Juniper\", mark: \"J\" },\n  { name: \"Halden\", mark: \"H\" },\n  { name: \"Mira Form\", mark: \"M\" },\n]\n\nexport function LogoMarquee({ preview = false }: { preview?: boolean }) {\n  const reduced = usePrefersReducedMotion()\n  const row = reduced ? studios : [...studios, ...studios]\n\n  return (\n    <section\n      aria-label=\"Studio marquee\"\n      className={preview ? \"flex h-full flex-col justify-center overflow-hidden bg-[#090909] text-[#f4efe6]\" : \"overflow-hidden bg-[#090909] py-16 text-[#f4efe6]\"}\n    >\n      <style>{`\n        @keyframes mk-marquee {\n          from { transform: translate3d(0, 0, 0); }\n          to { transform: translate3d(-50%, 0, 0); }\n        }\n        .mk-marquee-track { animation: mk-marquee 32s linear infinite; }\n        .mk-marquee:hover .mk-marquee-track { animation-play-state: paused; }\n        @media (prefers-reduced-motion: reduce) {\n          .mk-marquee-track { animation: none !important; transform: none !important; }\n        }\n      `}</style>\n      <div className={preview ? \"px-5\" : \"mx-auto max-w-5xl px-6\"}>\n        <p className=\"text-[10px] tracking-[0.32em] text-[#d6a860] uppercase\">On the reel</p>\n        <h2\n          className={preview ? \"mt-1 font-serif text-3xl\" : \"mt-3 font-serif text-5xl\"}\n          style={{ fontFamily: \"var(--font-serif), Georgia, serif\" }}\n        >\n          Studios that keep the lights low.\n        </h2>\n      </div>\n      <div className=\"mk-marquee mt-6 overflow-hidden border-y border-white/10\">\n        <div className={`flex w-max ${reduced ? \"flex-wrap gap-3 px-6 py-4\" : \"mk-marquee-track\"}`}>\n          {row.map((studio, index) => (\n            <div key={`${studio.name}-${index}`} className=\"flex items-center gap-3 px-6 py-4\">\n              <span className=\"grid size-9 place-items-center rounded-full border border-[#d6a860]/50 text-xs tracking-widest text-[#f0d7a8]\">\n                {studio.mark}\n              </span>\n              <span className=\"text-sm tracking-[0.16em] uppercase\">{studio.name}</span>\n            </div>\n          ))}\n        </div>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/motionkit/logo-marquee.tsx"
+    }
+  ],
+  "type": "registry:block"
+}

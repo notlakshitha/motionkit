@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "scroll-text-reveal",
+  "title": "Scroll Text Reveal",
+  "description": "A manifesto that lights word by word as the page moves.",
+  "dependencies": [
+    "gsap"
+  ],
+  "files": [
+    {
+      "path": "registry/motionkit/use-reduced-motion.ts",
+      "content": "\"use client\"\n\nimport { useSyncExternalStore } from \"react\"\n\nfunction subscribe(onStoreChange: () => void) {\n  const media = window.matchMedia(\"(prefers-reduced-motion: reduce)\")\n  media.addEventListener(\"change\", onStoreChange)\n  return () => media.removeEventListener(\"change\", onStoreChange)\n}\n\nfunction getSnapshot() {\n  return window.matchMedia(\"(prefers-reduced-motion: reduce)\").matches\n}\n\nfunction getServerSnapshot() {\n  return false\n}\n\nexport function usePrefersReducedMotion() {\n  return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot)\n}\n",
+      "type": "registry:lib",
+      "target": "components/motionkit/use-reduced-motion.ts"
+    },
+    {
+      "path": "registry/motionkit/scroll-text-reveal.tsx",
+      "content": "\"use client\"\n\nimport { useEffect, useRef } from \"react\"\nimport { usePrefersReducedMotion } from \"./use-reduced-motion\"\n\nconst LINE =\n  \"We cut the night into frames, then give each frame a place to breathe, a color to keep, and a name you can find in the dark.\"\n\nexport function ScrollTextReveal({ preview = false }: { preview?: boolean }) {\n  const rootRef = useRef<HTMLElement>(null)\n  const reduced = usePrefersReducedMotion()\n  const words = LINE.split(\" \")\n\n  useEffect(() => {\n    if (preview || reduced) return\n    const root = rootRef.current\n    if (!root) return\n\n    let cancelled = false\n    let revert = () => {}\n\n    void Promise.all([import(\"gsap\"), import(\"gsap/ScrollTrigger\")]).then(\n      ([{ default: gsap }, { ScrollTrigger }]) => {\n        if (cancelled || !rootRef.current) return\n        gsap.registerPlugin(ScrollTrigger)\n        const targets = root.querySelectorAll(\"[data-word]\")\n        const context = gsap.context(() => {\n          gsap.set(targets, { opacity: 0.16 })\n          gsap.to(targets, {\n            opacity: 1,\n            stagger: 0.06,\n            ease: \"none\",\n            scrollTrigger: {\n              trigger: root,\n              start: \"top 75%\",\n              end: \"bottom 55%\",\n              scrub: true,\n            },\n          })\n        }, root)\n        revert = () => context.revert()\n        if (cancelled) revert()\n      },\n    )\n\n    return () => {\n      cancelled = true\n      revert()\n    }\n  }, [preview, reduced])\n\n  return (\n    <section\n      ref={rootRef}\n      aria-label=\"Scroll text reveal\"\n      className={\n        preview\n          ? \"flex h-full items-center bg-[#090909] px-5 text-[#f4efe6]\"\n          : \"flex min-h-[150vh] items-center bg-[#090909] px-6 py-28 text-[#f4efe6]\"\n      }\n    >\n      <style>{`\n        @keyframes mk-word {\n          0%, 15% { opacity: 0.18; }\n          40%, 70% { opacity: 1; }\n          100% { opacity: 0.18; }\n        }\n        @media (prefers-reduced-motion: reduce) {\n          .mk-word { animation: none !important; opacity: 1 !important; }\n        }\n      `}</style>\n      <div className=\"mx-auto max-w-4xl\">\n        <p className=\"text-[10px] tracking-[0.32em] text-[#d6a860] uppercase\">Manifest</p>\n        <p\n          className={\n            preview\n              ? \"mt-3 font-serif text-2xl leading-snug\"\n              : \"mt-6 font-serif text-4xl leading-tight md:text-6xl\"\n          }\n          style={{ fontFamily: \"var(--font-serif), Georgia, serif\" }}\n        >\n          {words.map((word, index) => (\n            <span\n              key={`${word}-${index}`}\n              data-word\n              className=\"mk-word mr-[0.28em] inline-block\"\n              style={\n                preview && !reduced\n                  ? { animation: `mk-word 4.8s ease-in-out ${index * 0.08}s infinite` }\n                  : undefined\n              }\n            >\n              {word}\n            </span>\n          ))}\n        </p>\n      </div>\n    </section>\n  )\n}\n",
+      "type": "registry:component",
+      "target": "components/motionkit/scroll-text-reveal.tsx"
+    }
+  ],
+  "type": "registry:block"
+}
